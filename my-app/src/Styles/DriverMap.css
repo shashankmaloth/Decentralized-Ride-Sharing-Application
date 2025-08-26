@@ -1,0 +1,1065 @@
+/* Modern Driver Map Layout */
+.driver-map-wrapper {
+  min-height: 100vh;
+  background-color: var(--dark-bg);
+  color: var(--text-light);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Reuse the dashboard header styling */
+.dashboard-header {
+  height: 70px;
+  background-color: var(--dark-card);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dashboard-logo h1 {
+  color: var(--accent);
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--accent), var(--secondary));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dashboard-user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-greeting {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.user-avatar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* New layout structure */
+.driver-map-container {
+  display: flex;
+  flex: 1;
+}
+
+.driver-map-sidebar {
+  width: 250px;
+  background-color: var(--dark-card);
+  color: var(--text-light);
+  padding: 1.5rem 0;
+  box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sidebar-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sidebar-button {
+  background: none;
+  border: none;
+  color: var(--text-light);
+  padding: 0.75rem 1.5rem;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  transition: var(--transition);
+  font-size: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar-button::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background: linear-gradient(to bottom, var(--primary), var(--secondary));
+  transform: scaleY(0);
+  transition: transform 0.2s ease;
+}
+
+.sidebar-button:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.sidebar-button:hover::before {
+  transform: scaleY(1);
+}
+
+.sidebar-button.active {
+  background-color: rgba(82, 98, 234, 0.15);
+  color: var(--text-light);
+  font-weight: 600;
+}
+
+.sidebar-button.active::before {
+  transform: scaleY(1);
+}
+
+.sidebar-button.back-button {
+  margin-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 1.5rem;
+}
+
+.sidebar-button.logout-button {
+  color: #ff5757;
+}
+
+.button-icon {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  transition: var(--transition);
+}
+
+.sidebar-button:hover .button-icon,
+.sidebar-button.active .button-icon {
+  color: var(--primary);
+}
+
+.driver-map-main {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.driver-map-content {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+  background-color: var(--dark-bg);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.driver-map-content.with-map {
+  flex: 0.4;
+}
+
+.map-container {
+  flex: 0.6;
+  height: calc(100vh - 70px);
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+}
+
+/* Add styles for Google Maps */
+.map-container > div {
+  width: 100%;
+  height: 100%;
+}
+
+/* Ensure the Map component fills its container */
+[class*="google-map-"] {
+  width: 100%;
+  height: 100%;
+}
+
+/* Post Ride Form with modern styling */
+.post-ride-form {
+  background-color: var(--dark-card);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.post-ride-form h3 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: var(--text-light);
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 0.5rem;
+  display: inline-block;
+}
+
+.post-ride-form h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius);
+  font-size: 0.95rem;
+  color: var(--text-light);
+  transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(82, 98, 234, 0.1);
+}
+
+.submit-ride-button {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.75rem 1rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 600;
+  width: 100%;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 15px rgba(82, 98, 234, 0.2);
+}
+
+.submit-ride-button:hover {
+  background-color: var(--primary-light);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(82, 98, 234, 0.3);
+}
+
+.submit-ride-button:disabled {
+  background-color: var(--text-muted);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Two-column layout for rides and requests */
+.driver-rides-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  height: calc(100vh - 120px); /* Adjust for header and padding */
+}
+
+/* Rides List Styling */
+.my-rides-list {
+  background-color: var(--dark-card);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow-y: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.my-rides-list h3 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: var(--text-light);
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 0.5rem;
+  display: inline-block;
+}
+
+.my-rides-list h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+.rides-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+  padding-right: 0.5rem;
+}
+
+.ride-item {
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: var(--border-radius);
+  padding: 1.25rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: var(--transition);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.ride-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+
+.ride-item.selected {
+  background-color: rgba(82, 98, 234, 0.1);
+  border: 1px solid rgba(82, 98, 234, 0.3);
+}
+
+.ride-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.ride-header h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--text-light);
+  font-weight: 600;
+}
+
+.ride-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.ride-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.ride-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  padding: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.02);
+  border-radius: var(--border-radius);
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.detail-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detail-value {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+.ride-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: auto;
+}
+
+.start-ride-button,
+.complete-ride-button,
+.cancel-ride-button {
+  flex: 1;
+  padding: 0.75rem;
+  border-radius: var(--border-radius);
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: var(--transition);
+}
+
+.start-ride-button {
+  background-color: var(--primary);
+  color: white;
+}
+
+.start-ride-button:hover {
+  background-color: var(--primary-light);
+}
+
+.complete-ride-button {
+  background-color: var(--accent);
+  color: #000;
+}
+
+.complete-ride-button:hover {
+  background-color: #f8d441;
+}
+
+.cancel-ride-button {
+  background-color: rgba(255, 71, 87, 0.1);
+  color: #ff4757;
+}
+
+.cancel-ride-button:hover {
+  background-color: rgba(255, 71, 87, 0.2);
+}
+
+.ride-canceled-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--border-radius);
+  background-color: rgba(255, 71, 87, 0.1);
+  color: #ff4757;
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+.status {
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status.active {
+  background-color: rgba(22, 230, 220, 0.1);
+  color: var(--secondary);
+}
+
+.status.in_progress {
+  background-color: rgba(240, 200, 52, 0.1);
+  color: var(--accent);
+}
+
+.status.completed {
+  background-color: rgba(46, 213, 115, 0.1);
+  color: #2ed573;
+}
+
+.status.cancelled {
+  background-color: rgba(255, 71, 87, 0.1);
+  color: #ff4757;
+}
+
+.status.requested {
+  background-color: rgba(82, 98, 234, 0.1);
+  color: var(--primary);
+}
+
+.status.confirmed {
+  background-color: rgba(46, 213, 115, 0.1);
+  color: #2ed573;
+}
+
+.no-rides-message {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  background-color: rgba(255, 255, 255, 0.02);
+  border-radius: var(--border-radius);
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+/* Ride Requests Styling */
+.ride-requests {
+  background-color: var(--dark-card);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow-y: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.ride-requests h3 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: var(--text-light);
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 0.5rem;
+  display: inline-block;
+}
+
+.ride-requests h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+.requests-container {
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.request-item {
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 1rem;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: var(--transition);
+}
+
+.request-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+
+.request-item.requested {
+  border-left: 3px solid var(--primary);
+}
+
+.request-item.accepted {
+  border-left: 3px solid #2ed573;
+}
+
+.request-item.rejected {
+  border-left: 3px solid #ff4757;
+}
+
+.request-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.confirm-button,
+.reject-button {
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--border-radius);
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.85rem;
+  flex: 1;
+  transition: var(--transition);
+}
+
+.confirm-button {
+  background-color: var(--primary);
+  color: white;
+}
+
+.confirm-button:hover {
+  background-color: var(--primary-light);
+}
+
+.reject-button {
+  background-color: rgba(255, 71, 87, 0.1);
+  color: #ff4757;
+}
+
+.reject-button:hover {
+  background-color: rgba(255, 71, 87, 0.2);
+}
+
+.request-accepted-message,
+.request-rejected-message {
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  text-align: center;
+  width: 100%;
+}
+
+.request-accepted-message {
+  background-color: rgba(46, 213, 115, 0.1);
+  color: #2ed573;
+}
+
+.request-rejected-message {
+  background-color: rgba(255, 71, 87, 0.1);
+  color: #ff4757;
+}
+
+.form-hint {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+  padding-left: 0.5rem;
+  border-left: 2px solid var(--text-muted);
+  line-height: 1.4;
+}
+
+.error-message {
+  background-color: rgba(255, 87, 87, 0.1);
+  color: #ff5757;
+  padding: 0.75rem 1rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  border-left: 4px solid #ff5757;
+}
+
+.map-select-button {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: var(--transition);
+}
+
+.map-select-button:hover {
+  background-color: var(--primary-light);
+}
+
+.map-select-button.active {
+  background-color: var(--secondary);
+  color: var(--dark-bg);
+}
+
+@media (max-width: 992px) {
+  .driver-rides-layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    height: auto;
+  }
+
+  .my-rides-list,
+  .ride-requests {
+    max-height: 500px;
+  }
+
+  .driver-map-main {
+    flex-direction: column;
+  }
+
+  .driver-map-content {
+    order: 1;
+    padding: 1rem;
+  }
+
+  .driver-map-content.with-map {
+    flex: none;
+  }
+
+  .map-container {
+    order: 0;
+    flex: none;
+    height: 400px;
+    width: 100%;
+    border-left: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+}
+
+@media (max-width: 768px) {
+  .driver-map-container {
+    flex-direction: column;
+  }
+
+  .driver-map-sidebar {
+    width: 100%;
+    padding: 0.5rem;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .sidebar-section {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  .sidebar-button {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .sidebar-button.back-button {
+    margin-top: 0;
+    border-top: none;
+    padding-top: 0.5rem;
+  }
+
+  .rides-container {
+    grid-template-columns: 1fr;
+    max-height: none;
+  }
+
+  .ride-details {
+    grid-template-columns: 1fr;
+  }
+
+  .ride-actions {
+    flex-direction: column;
+  }
+
+  .map-container {
+    height: 300px;
+  }
+
+  .dashboard-header {
+    padding: 0 1rem;
+  }
+
+  .user-greeting {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .sidebar-button span {
+    display: none;
+  }
+
+  .sidebar-button {
+    justify-content: center;
+  }
+
+  .button-icon {
+    font-size: 1.5rem;
+  }
+}
+
+@keyframes statusTransition {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.status {
+  transform-origin: left;
+  animation: statusTransition 0.3s ease;
+}
+
+.loading-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  color: var(--text-muted);
+  font-size: 1.2rem;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+.form-section-title {
+  font-weight: 600;
+  color: var(--text-light);
+  margin: 1.5rem 0 1rem;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form-section-icon {
+  color: var(--primary);
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-group.half {
+  flex: 1;
+}
+
+.current-location-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(22, 230, 220, 0.1);
+  color: var(--secondary);
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--border-radius);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.location-icon {
+  font-size: 1rem;
+}
+
+.route-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.summary-item {
+  text-align: center;
+}
+
+.summary-label {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-bottom: 0.3rem;
+}
+
+.summary-value {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--text-light);
+}
+
+.loading-spinner {
+  width: 30px;
+  height: 30px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+.map-toggle-prompt {
+  background-color: var(--dark-card);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.map-toggle-prompt p {
+  margin-bottom: 1.5rem;
+  color: var(--text-muted);
+}
+
+.show-map-button {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 15px rgba(82, 98, 234, 0.2);
+}
+
+.show-map-button:hover {
+  background-color: var(--primary-light);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(82, 98, 234, 0.3);
+}
+
+.location-input-container {
+  position: relative;
+}
+
+.map-select-button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  font-size: 1rem;
+  height: 30px;
+  width: 30px;
+}
+
+.map-select-button:hover {
+  background-color: var(--primary-light);
+}
+
+.map-select-button.active {
+  background-color: var(--secondary);
+  color: var(--dark-bg);
+}
+
+@media (max-width: 576px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .route-summary {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.my-rides-list.full-width {
+  grid-column: 1 / -1;
+}
+
+.view-requests-button {
+  flex: 1;
+  padding: 0.75rem;
+  border-radius: var(--border-radius);
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: var(--transition);
+  background-color: rgba(82, 98, 234, 0.1);
+  color: var(--primary);
+}
+
+.view-requests-button:hover {
+  background-color: rgba(82, 98, 234, 0.2);
+  transform: translateY(-2px);
+}
+
+.request-count {
+  background-color: var(--primary);
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+.request-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.close-requests-button {
+  background-color: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.5rem;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: var(--transition);
+}
+
+.close-requests-button:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--text-light);
+}
+
+.requests-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+  padding-right: 0.5rem;
+}
